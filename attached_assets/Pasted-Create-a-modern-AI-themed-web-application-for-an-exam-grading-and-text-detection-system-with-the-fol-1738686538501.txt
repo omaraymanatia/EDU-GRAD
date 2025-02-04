@@ -1,0 +1,126 @@
+Create a modern AI-themed web application for an exam grading and text detection system with the following specifications:
+
+Design Theme
+Color Scheme: Futuristic gradient palette (electric blue → neon purple → white) with holographic accents
+
+AI Patterns:
+
+Background: Animated neural network connections + floating circuit board SVG patterns
+
+Section dividers: Binary code animations with smooth transitions
+
+Typography: Clean sans-serif (Inter font) with tech-inspired headings
+
+Animations:
+
+Hover effects: Button glow + card elevation
+
+Page transitions: Smooth parallax scrolling
+
+Loading states: AI brain SVG loader
+
+Pages & Features
+Login/Register Page
+
+Glassmorphism login cards with floating AI icons
+
+Particle.js background with moving data points
+
+Role selector (Professor/Student) with animated toggle
+
+Professor Dashboard
+
+Main Features:
+
+Drag-and-drop exam upload zone (PNG/PDF) with real-time preview
+
+Answer key input panel with syntax highlighting
+
+Progress visualization: AI processing status with neural network animation
+
+Design:
+
+Dashboard grid with glowing data widgets
+
+Holographic file upload interface
+
+Results table with heatmap visualization for AI detection scores
+
+Student Dashboard
+
+Main Features:
+
+Grading report card with interactive feedback sections
+
+AI authenticity meter (radial progress chart)
+
+Downloadable PDF reports with animated charts
+
+Design:
+
+Floating feedback cards with morphing shapes
+
+Animated authenticity badge (dynamic color based on AI probability)
+
+Pricing Page
+
+Layout:
+
+3-tier pricing cards (Free/Pro/Enterprise) with:
+
+Centered gradient buttons at card bottom
+
+Hover-triggered price breakdown animations
+
+AI feature comparison matrix
+
+Effects:
+
+Card hover: 3D tilt effect + subtle glow
+
+Background: Floating exam paper SVGs with opacity pulse
+
+About Page
+
+Animated timeline of AI processing workflow
+
+Team section with holographic profile cards
+
+Interactive AI model architecture diagram
+
+Components
+Navigation:
+
+Dynamic nav bar with:
+
+Hover-activated gradient underline
+
+Floating AI assistant icon (sparks on click)
+
+Role-specific menu items (auto-hide irrelevant links)
+
+Access Control:
+
+Strict role-based routing (students never see professor dashboard)
+
+Session management with JWT tokens
+
+Responsive Design:
+
+Mobile-optimized layouts with collapsible AI visualizations
+
+Technical Requirements
+Frontend: React.js with Framer Motion + Three.js for animations
+
+Backend: Node.js/Express API endpoints for file processing
+
+Database: PostgreSQL with encrypted exam storage
+
+Auth: OAuth2 integration with role management
+
+Notes
+Prioritize dark mode aesthetics with glowing accents
+
+Use SVG-based AI patterns for all backgrounds
+
+Implement smooth micro-interactions for all buttons/forms
