@@ -5,7 +5,7 @@ import { AILoader } from "@/components/ui/ai-loader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Upload, ChevronRight, FileText, Table } from "lucide-react";
+import { Upload, ChevronRight, FileText, Table, Calculator } from "lucide-react";
 import type { SelectExam } from "@db/schema";
 
 export default function ProfessorDashboard() {
@@ -14,6 +14,10 @@ export default function ProfessorDashboard() {
   const { data: exams, isLoading } = useQuery<SelectExam[]>({
     queryKey: ["/api/professor/exams"],
   });
+
+  // TODO: Replace with actual upload states
+  const hasExamUploaded = false;
+  const hasAnswersUploaded = false;
 
   if (isLoading) return <AILoader />;
 
@@ -93,6 +97,26 @@ export default function ProfessorDashboard() {
               <p className="text-sm text-muted-foreground mt-2">
                 File should contain student IDs and their responses
               </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-background/60 backdrop-blur-lg border-primary/20">
+          <CardContent className="pt-6">
+            <div className="text-center space-y-4">
+              <Button 
+                size="lg"
+                className="w-full md:w-auto min-w-[200px]"
+                disabled={!hasExamUploaded || !hasAnswersUploaded}
+              >
+                <Calculator className="w-4 h-4 mr-2" />
+                Calculate Student Scores
+              </Button>
+              {(!hasExamUploaded || !hasAnswersUploaded) && (
+                <p className="text-sm text-muted-foreground">
+                  Please upload both the exam and student answers before calculating scores
+                </p>
+              )}
             </div>
           </CardContent>
         </Card>
