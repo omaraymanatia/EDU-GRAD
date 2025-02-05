@@ -5,7 +5,7 @@ import { AILoader } from "@/components/ui/ai-loader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Upload, ChevronRight, FileText } from "lucide-react";
+import { Upload, ChevronRight, FileText, Table } from "lucide-react";
 import type { SelectExam } from "@db/schema";
 
 export default function ProfessorDashboard() {
@@ -20,7 +20,7 @@ export default function ProfessorDashboard() {
   return (
     <div className="min-h-screen pt-20 p-4">
       <NeuralBackground />
-      
+
       <div className="container mx-auto space-y-8">
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="bg-background/60 backdrop-blur-lg border-primary/20">
@@ -69,6 +69,29 @@ export default function ProfessorDashboard() {
               </div>
               <p className="text-muted-foreground">
                 Drag and drop your exam files here or click to browse
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-background/60 backdrop-blur-lg border-primary/20">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Upload Student Answers</CardTitle>
+            <Button variant="outline" className="group">
+              <Upload className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+              Upload CSV
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <div className="border-2 border-dashed border-primary/20 rounded-lg p-8 text-center">
+              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Table className="w-6 h-6 text-primary" />
+              </div>
+              <p className="text-muted-foreground">
+                Upload a CSV file containing student answers
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                File should contain student IDs and their responses
               </p>
             </div>
           </CardContent>
