@@ -39,7 +39,7 @@ async function getUserByUsername(username: string) {
 export function setupAuth(app: Express) {
   const store = new PostgresSessionStore({ pool, createTableIfMissing: true });
   const sessionSettings: session.SessionOptions = {
-    secret: process.env.REPL_ID!,
+    secret: process.env.REPL_ID! || "secret",
     resave: false,
     saveUninitialized: false,
     store,
@@ -61,7 +61,7 @@ export function setupAuth(app: Express) {
       } else {
         return done(null, user);
       }
-    }),
+    })
   );
 
   passport.serializeUser((user, done) => done(null, user.id));
