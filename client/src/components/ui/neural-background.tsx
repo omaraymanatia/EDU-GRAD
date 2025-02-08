@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export function NeuralBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -7,13 +7,14 @@ export function NeuralBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particles: Array<{x: number, y: number, vx: number, vy: number}> = [];
+    const particles: Array<{ x: number; y: number; vx: number; vy: number }> =
+      [];
     const particleCount = 100;
 
     for (let i = 0; i < particleCount; i++) {
@@ -21,12 +22,12 @@ export function NeuralBackground() {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
+        vy: (Math.random() - 0.5) * 0.5,
       });
     }
 
     function animate() {
-      ctx.fillStyle = 'rgba(0, 0, 20, 0.1)';
+      ctx.fillStyle = "rgba(255, 255, 255, 1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, i) => {
@@ -38,7 +39,7 @@ export function NeuralBackground() {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, 1, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(64, 96, 255, 0.5)';
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
         ctx.fill();
 
         particles.forEach((p2, j) => {
@@ -51,7 +52,7 @@ export function NeuralBackground() {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(64, 96, 255, ${1 - dist/100})`;
+            ctx.strokeStyle = `rgba(64, 96, 255, ${1 - dist / 100})`;
             ctx.stroke();
           }
         });
@@ -67,15 +68,15 @@ export function NeuralBackground() {
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10"
-      style={{ background: 'linear-gradient(to right, #000428, #004e92)' }}
+      className='fixed inset-0 -z-10'
+      style={{ background: "linear-gradient(to right, #000428, #004e92)" }}
     />
   );
 }

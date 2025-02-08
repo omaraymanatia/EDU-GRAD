@@ -15,15 +15,17 @@ export default function AuthPage() {
   const [, setLocation] = useLocation();
   const { user, loginMutation, registerMutation } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
-  const [selectedRole, setSelectedRole] = useState<"student" | "professor">("student");
+  const [selectedRole, setSelectedRole] = useState<"student" | "professor">(
+    "student"
+  );
 
   const form = useForm({
     resolver: zodResolver(insertUserSchema),
     defaultValues: {
       username: "",
       password: "",
-      role: selectedRole
-    }
+      role: selectedRole,
+    },
   });
 
   useEffect(() => {
@@ -38,55 +40,67 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <NeuralBackground />
+    <div className='min-h-screen flex items-center justify-center p-4 relative'>
+      {/* Neural Background */}
+      <div className='absolute inset-0 z-0'>
+        <NeuralBackground />
+      </div>
 
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
-        <Card className="p-6 bg-background/60 backdrop-blur-lg border-primary/20">
+      {/* Content */}
+      <div className='relative z-10 w-full max-w-6xl grid md:grid-cols-2 gap-8'>
+        {/* Login Card */}
+        <Card className='p-6 bg-white/90 backdrop-blur-lg border-purple-200 shadow-lg'>
           <CardContent>
-            <div className="space-y-6">
-              <div className="space-y-2 text-center">
-                <h1 className="text-3xl font-bold">
+            <div className='space-y-6'>
+              <div className='space-y-2 text-center'>
+                <h1 className='text-3xl font-bold text-purple-800'>
                   {isLogin ? "Welcome Back" : "Create Account"}
                 </h1>
-                <p className="text-muted-foreground">
-                  AI-powered exam grading platform
-                </p>
+                <p className='text-black'>AI-powered exam grading platform</p>
               </div>
 
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="username">Username</Label>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className='space-y-4'
+              >
+                <div className='space-y-2'>
+                  <Label htmlFor='username' className='text-purple-800'>
+                    Username
+                  </Label>
                   <Input
-                    id="username"
+                    id='username'
                     {...form.register("username")}
-                    className="bg-background/50"
+                    className='bg-purple-50 border-purple-200 focus-visible:ring-purple-500 text-black'
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
+                <div className='space-y-2'>
+                  <Label htmlFor='password' className='text-purple-800'>
+                    Password
+                  </Label>
                   <Input
-                    id="password"
-                    type="password"
+                    id='password'
+                    type='password'
                     {...form.register("password")}
-                    className="bg-background/50"
+                    className='bg-purple-50 border-purple-200 focus-visible:ring-purple-500 text-black'
                   />
                 </div>
 
                 {!isLogin && (
-                  <div className="space-y-2">
-                    <Label>Role</Label>
-                    <div className="flex gap-4">
+                  <div className='space-y-2'>
+                    <Label className='text-purple-800'>Role</Label>
+                    <div className='flex gap-4'>
                       <Toggle
                         pressed={selectedRole === "student"}
                         onPressedChange={() => setSelectedRole("student")}
+                        className='data-[state=on]:bg-purple-600 data-[state=on]:text-white border-purple-200 text-purple-800'
                       >
                         Student
                       </Toggle>
                       <Toggle
                         pressed={selectedRole === "professor"}
                         onPressedChange={() => setSelectedRole("professor")}
+                        className='data-[state=on]:bg-purple-600 data-[state=on]:text-white border-purple-200 text-purple-800'
                       >
                         Professor
                       </Toggle>
@@ -95,17 +109,19 @@ export default function AuthPage() {
                 )}
 
                 <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={loginMutation.isPending || registerMutation.isPending}
+                  type='submit'
+                  className='w-full bg-purple-600 hover:bg-purple-700'
+                  disabled={
+                    loginMutation.isPending || registerMutation.isPending
+                  }
                 >
                   {isLogin ? "Login" : "Register"}
                 </Button>
               </form>
 
               <Button
-                variant="ghost"
-                className="w-full"
+                variant='ghost'
+                className='w-full text-purple-600 hover:text-purple-700 hover:bg-purple-50'
                 onClick={() => setIsLogin(!isLogin)}
               >
                 {isLogin ? "Need an account?" : "Already have an account?"}
@@ -114,17 +130,18 @@ export default function AuthPage() {
           </CardContent>
         </Card>
 
-        <div className="hidden md:flex flex-col justify-center text-center space-y-6">
-          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+        {/* Right Side */}
+        <div className='hidden md:flex flex-col justify-center text-center space-y-6'>
+          <h2 className='text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600'>
             Next-Gen Exam Grading
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className='text-xl text-black'>
             Powered by advanced AI for accurate and efficient assessment
           </p>
           <img
-            src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1"
-            alt="AI Technology"
-            className="rounded-lg shadow-2xl"
+            src='https://github.com/ziadmostafa1/ziadmostafa1.github.io/blob/main/images/2nd-post/Screenshot%202025-02-08%20141236%20-%20Copy.png?raw=true'
+            alt='AI Technology'
+            className='rounded-lg shadow-2xl border-4 border-purple-100'
           />
         </div>
       </div>
